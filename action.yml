@@ -21,6 +21,7 @@ runs:
         extends: |
           @vc-vantage/semantic-release-npm-github-config
         extra_plugins: |
+          @vc-vantage/semantic-release-npm-github-config
           @semantic-release/git
           @semantic-release/changelog
           conventional-changelog-conventionalcommits
