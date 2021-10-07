@@ -10,14 +10,16 @@ inputs:
 runs:
   using: "composite"
   steps:
-    - name: Prepare `.releaserc` configuration
-      run: cp ${{ github.action_path }}/.releaserc.yaml ${{ github.workspace }}/.releaserc.yaml
-      shell: bash
+#    - name: Prepare `.releaserc` configuration
+#      run: cp ${{ github.action_path }}/.releaserc.yaml ${{ github.workspace }}/.releaserc.yaml
+#      shell: bash
     
-    - name: Release 
+    - name: Release
       uses: cycjimmy/semantic-release-action@v2
       id: semantic
       with:
+        extends: |
+          @vc-vantage/semantic-release-npm-github-config
         extra_plugins: |
           @semantic-release/git
           @semantic-release/changelog
