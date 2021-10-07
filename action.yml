@@ -1,0 +1,27 @@
+name: 'Semantic Release'
+description: 'Semantic Release on main branch'
+inputs:
+  github-token:  
+    description: '`GITHUB_TOKEN` secret'
+    required: true
+  npm-token:  
+    description: '`NPM_TOKEN` secret'
+    required: true
+runs:
+  using: "composite"
+  steps:
+    - name: Prepare `.releaserc` configuration
+      run: cp ${{ github.action_path }}/.releaserc.yaml ${{ github.workspace }}/.releaserc.yaml
+      shell: bash
+    
+    - name: Release 
+      uses: cycjimmy/semantic-release-action@v2
+      id: semantic
+      with:
+        extra_plugins: |
+          @semantic-release/git
+          @semantic-release/changelog
+          conventional-changelog-conventionalcommits
+      env:
+        GITHUB_TOKEN: ${{ inputs.github-token }}
+        NPM_TOKEN: ${{ inputs.npm-token }}

@@ -1,0 +1,18 @@
+name: Semantic Release
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  semantic_pr_job:
+    runs-on: ubuntu-latest
+    name: Composite Action check
+    steps:
+      - uses: actions/checkout@v2
+      - id: foo
+        uses: vc-vantage/semantic-release-composite-action@v1
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          npm-token: ${{ secrets.NPM_TOKEN }}

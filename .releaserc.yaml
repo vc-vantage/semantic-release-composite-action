@@ -1,0 +1,26 @@
+branches:
+  - main
+  - master
+
+preset: conventionalcommits
+
+plugins:
+  - "@semantic-release/commit-analyzer"
+  - - "@semantic-release/release-notes-generator"
+    - presetConfig:
+        issuePrefixes: 
+          - "VPM-"
+        commitUrlFormat: "{{host}}/{{owner}}/{{repository}}/commits/{{hash}}"
+        compareUrlFormat: "{{host}}/{{owner}}/{{repository}}/compare/{{currentTag}}%0D{{previousTag}}#diff"
+        issueUrlFormat: "https://jira.mtvi.com/browse/{{prefix}}{{id}}"
+  - - "@semantic-release/changelog"
+    - changelogTitle: |-
+        # Change Log
+
+        All notable changes to this project will be documented in this file.
+        See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
+  - - "@semantic-release/git"
+    - assets:
+        - CHANGELOG.md
+      message: "chore(release): v${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
+  - "@semantic-release/github"
