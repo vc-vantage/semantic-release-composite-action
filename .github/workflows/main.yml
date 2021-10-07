@@ -12,7 +12,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: foo
-        uses: vc-vantage/semantic-release-composite-action@v1
+        uses: vc-vantage/semantic-release-composite-action@main
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           npm-token: ${{ secrets.NPM_TOKEN }}
