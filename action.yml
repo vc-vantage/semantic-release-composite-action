@@ -19,12 +19,7 @@ runs:
       id: semantic
       with:
         extends: |
-          @vc-vantage/semantic-release-npm-github-config
-        extra_plugins: |
-          vc-vantage/semantic-release-npm-github-config
-          @semantic-release/git
-          @semantic-release/changelog
-          conventional-changelog-conventionalcommits
+          @vc-vantage/semantic-release-npm-github-config@v1.0.0
       env:
         GITHUB_TOKEN: ${{ inputs.github-token }}
         NPM_TOKEN: ${{ inputs.npm-token }}
